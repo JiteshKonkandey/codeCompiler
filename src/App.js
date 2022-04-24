@@ -1,25 +1,100 @@
-import logo from './logo.svg';
+import React, { useState } from "react";
+import axios from "axios";
+import Editor from "@monaco-editor/react";
+import Navbar from "./Components/Navbar";
 import './App.css';
+import spinner from "./Icons/wheel-spinner-svgrepo-com.svg";
 
-function App() {
+const App = () => {
+  //This is for users wirtten code.
+  const [sourceCode, setSourceCode] = useState("");
+
+  //This is the code for users language.
+  const [defaultLanguage, setDefaultLanguage] = useState("pyhton");
+
+  //Thid is for theme.
+  const [defaultTheme, setDefaultTheme] = useState("light")
+
+  //This is for editors font size.
+  const [defaultFontSize, setDefaultFontSize] = useState(20);
+  
+  //This is for users input.
+  const [userInput, setUserInput] = useState("");
+
+  //This state fo output.
+  const [userOuptut, setUserOutput] = useState("");
+
+  //This is for loading Spinner while fetching data.
+  const [loadingSpinner, setLoadingSpinner] = useState(false);
+
+  //Function to call the compile endpoint
+  const CodeCompile = () => {
+      setLoadingSpinner(true)
+      if (sourceCode === ``) {
+        return
+      }
+      axios.post(`http://localhost:8000/compile`, {
+      code: sourceCode,
+      language: defaultLanguage,
+      input: userInput }).then((res) => {
+      setUserOutput(res.data.output);
+    }).then(() => {
+      setLoadingSpinner(false);
+    })
+  
+  }
+  // Function to clear the output screen
+  const clearOutput = () => {
+      setUserOutput("");
+    }
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar 
+        defaultLanguage={defaultLanguage} setDefaultLanguage={setDefaultLanguage}
+        defaultTheme={defaultTheme} setDefaultTheme={setDefaultTheme}
+        defaultFontSize={defaultFontSize} setDefaultFontSize={setDefaultFontSize}
+      />
+      <div className="container-main">
+        <div className="code-container">
+          <Editor
+              FontSize={defaultFontSize}
+              height="90vh"
+              width="100%"
+              theme={defaultTheme}
+              language={defaultLanguage}
+              defaultLanguage="python"
+              defaultValue="#### ----- Code Here ----- ####"
+              onChange={(value) => { setSourceCode(value) }}
+            />
+            <button className="code-runButton" onClick={CodeCompile}>Run</button>
+        </div>
+        <div className="inputOutput-container">
+        
+          <h4>Input:</h4>
+          <div className="text-areaBox">
+            <textarea id="code-source" onChange=
+              {(e) => setUserInput(e.target.value)}>
+            </textarea>
+          </div>
+          <h4>Output:</h4>
+          {loadingSpinner ? (
+            <div className="loading-spinnerIcon">
+              <img src={spinner} alt="Loading.." />
+            </div>
+          ): (
+            <div className="output-Box">
+              <pre>{userOuptut}</pre>
+              <button onClick={() => { clearOutput() }}
+                 className="clear-btn">
+                 Clear
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
-  );
+  )
 }
 
 export default App;
