@@ -1,0 +1,107 @@
+.App{
+    max-height: 100vh;
+    width: 100%;
+    /* overflow-y: hidden; */
+    background-color: #0c110b;
+  }
+  .container-main{
+    display: flex;
+    height: 90vh;
+  }
+  .code-container{
+    position: relative;
+    width: 70vw !important;
+    /* flex: 60%; */
+    height: 70vh;
+    margin-top: 1rem;
+  }
+  .inputOutput-container{
+    flex: 50%;
+    height: 90vh;
+    width: 50vw !important;
+    display: flex;
+    flex-direction: column;
+    background-color: #540707;
+    border-left: 3px solid #1f65e6;
+    /* padding: 5px; */
+  }
+  .text-areaBox{
+    flex: 40%;
+
+  }
+  .text-areaBox textarea{
+    font-size: 18px;
+
+  }
+  .loading-spinnerIcon{
+    flex: 50%;
+    background-color: #242424;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .loading-spinnerIcon img{
+    width: 200px;
+  }
+  .output-Box{
+    flex: 50%;
+    background-color: #242424;
+    overflow-y: auto;
+    color: white;
+    position: relative;
+  }
+  .clear-btn{
+    position: absolute;
+    bottom: 14px;
+    right: 18px;
+    width: 80px;
+    height: 40px;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    background-color: #1f65e6;
+    border: none;
+    border-radius: 4px;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+  .output-Box pre{
+    font-size: 15px;
+    white-space: pre-wrap;
+  }
+  h4{
+    color: #ffffff;
+    font-size: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  #output-Box{
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    resize: none;
+    background-color: #242424;
+    color: whitesmoke;
+    padding: 5px;
+  }
+  #output-Box:focus{
+    outline: none;
+  }
+  .code-runButton{
+    position: absolute;
+    bottom: 10px;
+    right: 18px;
+    width: 10rem;
+    height: 5rem;
+    font-size: 28px;
+    font-weight: bold;
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+  .code-runButton:active{
+    background-color: #6e9427;
+  }

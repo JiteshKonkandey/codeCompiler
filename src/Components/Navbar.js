@@ -15,17 +15,13 @@ const Navbar = ({defaultLanguage, setDefaultLanguage, defaultTheme, setDefaultTh
     ]
   return (
     <div className="navbar">
-            <h1>Compiler</h1>
+            <h1 className='mainhead'>Compiler</h1>
             <Select options={Languages} value={defaultLanguage}
                     onChange={(e) => setDefaultLanguage(e.value)}
                     placeholder={defaultLanguage} />
             <Select options={themes} value={defaultTheme}
                     onChange={(e) => setDefaultTheme(e.value)}
                     placeholder={defaultTheme} />
-            <label>Font Size</label>
-            <input type="range" min="18" max="30"
-                   value={defaultFontSize} step="2"
-                   onChange={(e) => { setDefaultFontSize(e.target.value)}}/>
         </div>
   )
 }

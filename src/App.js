@@ -10,7 +10,7 @@ const App = () => {
   const [sourceCode, setSourceCode] = useState("");
 
   //This is the code for users language.
-  const [defaultLanguage, setDefaultLanguage] = useState("pyhton");
+  const [defaultLanguage, setDefaultLanguage] = useState("python");
 
   //Thid is for theme.
   const [defaultTheme, setDefaultTheme] = useState("light")
@@ -43,6 +43,9 @@ const App = () => {
     })
   
   }
+  const options = {
+    fontSize: defaultFontSize
+  }
   // Function to clear the output screen
   const clearOutput = () => {
       setUserOutput("");
@@ -58,7 +61,7 @@ const App = () => {
       <div className="container-main">
         <div className="code-container">
           <Editor
-              FontSize={defaultFontSize}
+              options={options}
               height="90vh"
               width="100%"
               theme={defaultTheme}
@@ -77,13 +80,13 @@ const App = () => {
               {(e) => setUserInput(e.target.value)}>
             </textarea>
           </div>
-          <h4>Output:</h4>
           {loadingSpinner ? (
             <div className="loading-spinnerIcon">
               <img src={spinner} alt="Loading.." />
             </div>
           ): (
             <div className="output-Box">
+          <h4>Output:</h4>
               <pre>{userOuptut}</pre>
               <button onClick={() => { clearOutput() }}
                  className="clear-btn">

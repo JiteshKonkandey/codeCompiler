@@ -1,12 +1,17 @@
-/* .navbar{
+.navbar{
     display: flex;
     align-items: center;
+    justify-content: center;
     padding-left: 20px;
-    height: 50px;
+    height: 8vh;
     text-align: center;
-    color: #afec3f;
-    background-color: #474747;
-    gap: 20px;
+    color: #454954;
+    background-color: #c9abac;
+}
+
+.mainhead {
+    font-size: 38px;
+    margin: 0px 20px;
 }
 #no{
     height: 36px;
@@ -20,12 +25,16 @@
 #no:focus{
     outline: none;
 }
-.css-2b097c-container{
-    width: 120px;
+.css-b62m3t-container{
+    width: 15rem;
     color: black;
+    margin: 0px 50px;
     background-color: #474747;
 }
-.css-yk16xz-control{
+.css-1s2u09g-control{
     background-color: #474747 !important;
-    border-color: #afec3f !important;
-} */
+    border-color: #fffbfb !important;
+}
+.css-1s2u09g-control {
+    font-size: 20px;
+}
