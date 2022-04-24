@@ -10,7 +10,7 @@ const App = () => {
   const [sourceCode, setSourceCode] = useState("");
 
   //This is the code for users language.
-  const [defaultLanguage, setDefaultLanguage] = useState("python");
+  const [defaultLanguage, setDefaultLanguage] = useState("c");
 
   //Thid is for theme.
   const [defaultTheme, setDefaultTheme] = useState("light")
